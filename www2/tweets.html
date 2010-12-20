@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Nicola Tesser</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	<script type="text/javascript" src="./js/jquery-1.3.min.js"></script>
+	<script type="text/javascript" src="./js/nicolatesser.com.js"></script>
+	<script type="text/javascript" src="js/autolink.js"></script>
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+<div id="wrapper"><!-- #wrapper -->
+<section id="main"><!-- #main content and sidebar area -->
+	<section id="content"><!-- #content -->
+		<article id ="tweets">
+			<h2><a href="tweets.html">Tweets</a></h2>
+			<p>In this section there are my latest tweets on Twitter. (if you prefer, visit my <a target="_blank" href="http://twitter.com/ghiottolino">My Twitter page </a>).</p>
+							
+		</article>
+	</section><!-- end of #content -->
+
+	<aside id="sidebar"><!-- sidebar -->
+		<h3>Bio</h3>
+		<div id="bio"/>
+
+	</aside><!-- end of sidebar -->
+
+</section><!-- end of #main content and sidebar-->
+</div>
+
+	<script type="text/javascript">
+		 $(document).ready(function(){
+
+			$.ajax({
+			    type: "GET",
+			    url: "proxy.php?contentType=application%2Fxml&url=http%3A%2F%2Ftwitter.com%2Fstatuses%2Fuser_timeline%2F18757868.rss",
+			    dataType: "xml",
+			    success: function(xml) {
+				$(xml).find('item').each(function(){
+				    var pubDate = $(this).find('pubDate').text().substring(0,22);
+				    var description = $(this).find('description').text().replace("ghiottolino: ","");
+				    var span = $('<span></span>').html(pubDate);
+				    $('<h4></h4>').html(span).appendTo('#tweets');
+				    $('<p></p>').html(description).appendTo('#tweets');
+
+
+
+				});
+				$("#tweets").autolink();
+			    }
+			});
+		    });
+	</script>
+
+
+
+
+
+
+
+
+<!-- Free template created by http://freehtml5templates.com -->
+</body>
+</html>

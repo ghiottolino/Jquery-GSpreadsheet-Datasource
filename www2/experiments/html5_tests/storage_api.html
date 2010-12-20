@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>HTML5 storage test</title>
+</head>
+<body>
+
+<h1>Your LocalStorage</h1>
+
+<script type="text/javascript">
+alert("ciao");
+var host = location.hostname;
+var myLocalStorage = globalStorage[host]; // firefox 3+
+//var myLocalStorage = localStorage; // firefox 3.5+
+
+var id = "id+random";
+var data = "testItem2+random";
+alert("write: "+id+","+data);
+myLocalStorage.setItem(itemName, data);
+
+function writeLocal() {
+  var data = $('text').value;
+  var itemName = $('item_name').value;
+  myLocalStorage.setItem(itemName, data);
+  updateItemsList();
+}
+
+function deleteLocal(itemName) {
+  myLocalStorage.removeItem(itemName);
+  updateItemsList();
+}
+
+function readLocal(itemName) {
+  $('item_name').value=itemName;
+  $('text').value=myLocalStorage.getItem(itemName);
+}
+
+function updateItemsList() {
+  var items = myLocalStorage.length
+  // list items
+  var s = '<h2>Items for '+host+'</h2>';
+  s+= '<ul>';
+  for (var i=0;i<items;i++) {
+    var itemName = myLocalStorage.key(i);
+    s+= '<li>'+
+        '<div style="float:right;">'+
+        '<input type="button" value="Load" onclick="readLocal(\''+itemName+'\');"/'+'> '+
+        '<input type="button" value="Delete" onclick="deleteLocal(\''+itemName+'\');"/'+'> '+
+        '</div>'+
+        '<strong>'+itemName+'</strong>'+
+        '</li>';
+  }
+  $('items').innerHTML = s+'</ul>';
+}
+
+window.onload = function() {
+  updateItemsList();
+  $('text').value=[
+    'Quick and dirty Web Storage sample:','',
+    '1) Write some text',
+    '2) Give it some name',
+    '3) Click Save button','',
+    'Data is stored and retrieved using Web Storage (no cookies and no server side).'].join('\n');
+}
+
+</script>
+

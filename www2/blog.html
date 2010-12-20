@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Nicola Tesser</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	<script type="text/javascript" src="./js/jquery-1.3.min.js"></script>
+	<script type="text/javascript" src="./js/nicolatesser.com.js"></script>
+	<script type="text/javascript" src="./js/jquery.autoheight.js"></script>
+	<script type="text/javascript" src="./js/jquery.gspreadsheetdatasource.js"></script>
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+<div id="wrapper"><!-- #wrapper -->
+<section id="main"><!-- #main content and sidebar area -->
+	<section id="content"><!-- #content -->
+		<article id ="blog">
+			    <h2><a href="blog.html">Blog</a></h2>
+
+	
+
+
+		</article>
+	</section><!-- end of #content -->
+
+	<aside id="sidebar"><!-- sidebar -->
+		<h3>Bio</h3>
+		<div id="bio"/>
+
+	</aside><!-- end of sidebar -->
+
+</section><!-- end of #main content and sidebar-->
+</div>
+<!-- Free template created by http://freehtml5templates.com -->
+</body>
+
+ <script type="text/javascript">
+	 $(document).ready(function(){
+		// define your fields
+		var fields= new Array();
+		fields["f-title-"]="f-title-";
+		fields["f-article-"]="f-article-";
+		fields["f-date-"]="f-date-";
+		
+		var callback = function(records) {
+			for (var record_key in records)
+	    		{
+				var record = records[record_key];
+				//Print your datasource here
+				var title = record["f-title-"];
+				var article = record["f-article-"];
+				var date = record["f-date-"];
+
+				$('<h4></h4>').html(title +" - "+date).appendTo('#blog');
+				$('<p></p>').html(article).appendTo('#blog');
+			}
+		}
+
+		// call the function
+		var records = $().gspreadsheetsdatasource("./proxy.php?url=https%3A%2F%2Fspreadsheets.google.com%2Ffeeds%2Flist%2F0An1B2ThQBxFRdGZuMEdYRC1MZ0gxTDVneEZEQnFKMmc%2Fod6%2Fpublic%2Fbasic%3Falt%3Drss",fields,callback);
+		
+
+	});
+
+ </script>
+
+
+</html>
+
+<!-- https://spreadsheets.google.com/feeds/list/0An1B2ThQBxFRdGZuMEdYRC1MZ0gxTDVneEZEQnFKMmc/od6/public/basic?alt=rss -->

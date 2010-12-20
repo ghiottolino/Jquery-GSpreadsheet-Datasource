@@ -1,0 +1,39 @@
+<html>
+
+<head>
+<title>Nicola Tesser Bookmarklets collection</title>
+</head>
+
+<body>
+
+
+<h1>Nicola Tesser Bookmarklet Collection</h1>
+
+<h2> Component for more complex Bookmarklet</h2>
+
+<h3>Select Bookmarklet</h3>
+<a href="javascript:s=(window.getSelection?window.getSelection():document.getSelection());alert(s);">Select</a>
+
+<h3>Tokenize Selection Bookmarklet</h3>
+<a href="javascript:s=(window.getSelection?window.getSelection():document.getSelection());tokens=s.toString().split(' ');for(var i = 0;i<tokens.length;i++){alert(tokens[i]);}">Tokenize Selection</a>
+
+
+
+<h2> PONS </h2>
+
+<h3>Lookup Word DE-IT</h3>
+<a href="javascript:s=(window.getSelection?window.getSelection():document.getSelection());void(window.open('http://www.pons.eu/dict/search/results/?q='+s+'&in=&l=deit'));">Lookup Word DE-IT</a>
+
+<h3>Lookup Word DE-EN</h3>
+<a href="javascript:s=(window.getSelection?window.getSelection():document.getSelection());tokens=s.toString().split(' ');for(var i = 0;i<tokens.length;i++){void(window.open('http://www.pons.eu/dict/search/results/?q='+tokens[i]+'&in=&l=deit'));}">Lookup All Word DE-IT</a>
+
+<h3>Lookup All Words DE-IT</h3>
+
+<h3>Lookup All Words DE-EN</h3>
+
+<h2> Dead Simple Publisher </h2>
+
+<a href="javascript:void(window.open('http://ghiottolino.com/projects/dead-simple-publisher/index.html?title='+document.title))">DS PUB</a>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>HTML5 position test</title>
+</head>
+<body>
+
+<h1>Your Position</h1>
+
+<script>
+function success(position) {
+  alert("position:"+position.coords.latitude+","+position.coords.longitude);
+}
+
+function error(msg) {
+  alert("error:"+msg);
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success, error);
+} else {
+  error('not supported');
+}
+
+
+</script>
+
+
+</body>
+</html>
