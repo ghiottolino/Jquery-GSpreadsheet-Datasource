@@ -49,6 +49,20 @@ $(document).ready(function(){
 	function print_footer()
 	{
 		$("#wrapper").append("<footer><section id=\"footer-area\"><section id=\"footer-outer-block\"><!--<aside class=\"footer-segment\"><h4>section</h4><ul><li><a href=\"#\">one linkylink</a></li></ul></aside>--><!-- end of #first footer segment --></section><!-- end of footer-outer-block --></section><!-- end of footer-area --></footer>");
+		 print_analytics();
+	}
+	
+	function print_analytics()
+	{
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-21577651-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
 	}
 
 	function print_bio(level)
