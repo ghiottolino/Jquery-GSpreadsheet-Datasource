@@ -3,6 +3,8 @@
 (function($) {
 	$.fn.gspreadsheetsdatasource = function(url, fields, callback) {
 
+
+
 		// Do your awesome plugin stuff here
 
 		var records = new Array();
